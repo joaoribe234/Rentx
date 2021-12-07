@@ -37,8 +37,15 @@ import { Button } from "../../components/Button";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export function SchedulingDetails() {
+  const navigation = useNavigation();
+
+  function handleConfirmRental() {
+    navigation.navigate("SchedulingComplete");
+  }
+
   const theme = useTheme();
   return (
     <Container>
@@ -104,7 +111,11 @@ export function SchedulingDetails() {
         </RentalPrice>
       </Content>
       <Footer>
-        <Button title="Confirmar" />
+        <Button
+          title="Alugar Agora"
+          color={theme.colors.sucess}
+          onPress={handleConfirmRental}
+        />
       </Footer>
     </Container>
   );
